@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
         <TextBox x:Name="txtInput" Text="Type your input here in a comma sepperated list"/>
-        <Label x:Name="lblOutput" Content="Your output will print here" HorizontalContentAlignment="Right"/>
+        <Label x:Name="lblOutput" Content="Your output will print here" HorizontalContentAlignment="Right" FontFamily="Consolas" FontSize="6" ScrollBar.Scroll="LblOutput_Scroll"/>
         <Button x:Name="btnCreate" Content="Click me to create your spiral" Click="BtnCreate_Click"/>
     </StackPanel>
 </Window>

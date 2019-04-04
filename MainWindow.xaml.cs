@@ -84,7 +84,7 @@ namespace _184863Spirals
             int minY = yPosition.Min();
             int maxY = yPosition.Max();
             int topDecimal = numValues.Max();
-            for (int a = minY; a < maxY + 1; a++)//Loop through every y value
+            for (int a = maxY; a > minY - 1; a--)//Loop through every y value //int a == minY; a<maxY+1; a++
             {
                 int[] currentLine = new int[maxX - minX + 1];
                 for (int b = 0; b<yPosition.Length; b++)//Loop through every value
@@ -100,10 +100,37 @@ namespace _184863Spirals
                     {
                         lblOutput.Content += " ";
                     }
-                    lblOutput.Content += currentLine[c].ToString();
+                    if (currentLine[c] == 0)
+                    {
+                        lblOutput.Content += " ";
+                    }
+                    else
+                    {
+                        lblOutput.Content += currentLine[c].ToString();
+                    }
                 }
+                /*for (int c = currentLine.Length -1; c> -1; c--)
+                {
+                    for (int d = 0; d < topDecimal.ToString().Length - currentLine[c].ToString().Length + 1; d++)
+                    {
+                        lblOutput.Content += " ";
+                    }
+                    if (currentLine[c] == 0)
+                    {
+                        lblOutput.Content += " ";
+                    }
+                    else
+                    {
+                        lblOutput.Content += currentLine[c].ToString();
+                    }
+                }*/
                 lblOutput.Content += Environment.NewLine;
             }
+        }
+
+        private void LblOutput_Scroll(object sender, System.Windows.Controls.Primitives.ScrollEventArgs e)
+        {
+
         }
     }
 }
