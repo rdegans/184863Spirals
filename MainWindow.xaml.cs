@@ -36,20 +36,20 @@ namespace _184863Spirals
             int[] yPosition = new int[y - x + 1];
             int[] numValues = new int[y - x + 1];
             int[] directionX = new int[4];
-            int[] directionY= new int[4];
-            directionX[0]= 0;
-            directionX[1]= 1;
-            directionX[2]= 0;
-            directionX[3]= -1;
-            directionY[0]= -1;
-            directionY[1]= 0;
-            directionY[2]= 1;
-            directionY[3]= 0;
+            int[] directionY = new int[4];
+            directionX[0] = 0;
+            directionX[1] = 1;
+            directionX[2] = 0;
+            directionX[3] = -1;
+            directionY[0] = -1;
+            directionY[1] = 0;
+            directionY[2] = 1;
+            directionY[3] = 0;
             int sideLength = 1;
             int sideTimes = 0;
             int side = 0;
             int moveCounter = -1;
-            for (int i = 0; i<numValues.Length; i++)
+            for (int i = 0; i < numValues.Length; i++)
             {
                 if (i > 0)
                 {
@@ -75,9 +75,34 @@ namespace _184863Spirals
                     sideTimes = 0;
                 }
             }
-            for (int z = 0; z< numValues.Length; z++)
+            /*for (int z = 0; z< numValues.Length; z++)
             {
                 lblOutput.Content += numValues[z] + " " + xPosition[z] + " " + yPosition[z] + Environment.NewLine;
+            }*/
+            int minX = xPosition.Min();
+            int maxX = xPosition.Max();
+            int minY = yPosition.Min();
+            int maxY = yPosition.Max();
+            int topDecimal = numValues.Max();
+            for (int a = minY; a < maxY + 1; a++)//Loop through every y value
+            {
+                int[] currentLine = new int[maxX - minX + 1];
+                for (int b = 0; b<yPosition.Length; b++)//Loop through every value
+                {
+                    if (a == yPosition[b])//If the yValue = the current value
+                    {
+                        currentLine[xPosition[b] - minX] = numValues[b];//Set the corresponding spot in the array to the num value
+                    }
+                }
+                for (int c = 0; c<currentLine.Length; c++)
+                {
+                    for(int d=0; d<topDecimal.ToString().Length - currentLine[c].ToString().Length + 1; d++)
+                    {
+                        lblOutput.Content += " ";
+                    }
+                    lblOutput.Content += currentLine[c].ToString();
+                }
+                lblOutput.Content += Environment.NewLine;
             }
         }
     }
